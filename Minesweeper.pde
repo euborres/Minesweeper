@@ -23,7 +23,6 @@ void setup ()
     }
     
     
-    
     setBombs();
 }
 public void setBombs()
@@ -89,6 +88,11 @@ public class MSButton
     {
         clicked = true;
         //your code here
+        if(mouseButton == RIGHT){
+          if(marked == false){
+            clicked = false;
+          }
+        }
     }
 
     public void draw () 
@@ -123,7 +127,16 @@ public class MSButton
     {
         int numBombs = 0;
         //your code here
-        
+        for(int r = row-1; r<= row+1;r++){
+          for(int c = col-1; c<= col+1; c++){
+            if(isValid(r,c) && buttons[r][c] == this){
+              numBombs++;
+            }
+          }
+        }
+        if(buttons[r][c] == this){
+          numBombs--;
+        }
         return numBombs;
     }
 }
